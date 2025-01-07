@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 group = 'com.github.R0dN0c-FR'
-version = '0.9'
+version = '0.9.1'
 
 android {
     namespace 'com.valdesekamdem.library.mdtoast'
@@ -42,7 +42,7 @@ afterEvaluate {
 
                 groupId = 'com.github.R0dN0c-FR' // Votre ID de groupe sur JitPack
                 artifactId = 'md-toast'          // Nom de l'artefact
-                version = '0.9'                // Version de la bibliothèque
+                version = '0.9.1'                // Version de la bibliothèque
             }
         }
         repositories {
