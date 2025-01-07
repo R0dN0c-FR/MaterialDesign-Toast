@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 group = 'com.github.R0dN0c-FR'
-version = '1.0.0'
+version = '0.9'
 
 android {
     namespace 'com.valdesekamdem.library.mdtoast'
@@ -31,3 +32,28 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.5.2'
     androidTestImplementation 'androidx.test:rules:1.5.0'
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                // Ajout manuel des artefacts
+                artifact("$buildDir/outputs/aar/md-toast-release.aar")
+
+                groupId = 'com.github.R0dN0c-FR' // Votre ID de groupe sur JitPack
+                artifactId = 'md-toast'          // Nom de l'artefact
+                version = '0.9'                // Version de la bibliothèque
+            }
+        }
+        repositories {
+            maven {
+                url = uri("https://jitpack.io")
+            }
+        }
+    }
+    // Ajout de la dépendance explicite
+    tasks.named('publishMavenJavaPublicationToMavenLocal').configure {
+        dependsOn tasks.named('bundleReleaseAar')
+    }
+}
+
