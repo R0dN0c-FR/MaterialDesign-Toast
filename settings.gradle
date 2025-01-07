@@ -1,1 +1,2 @@
-include ':app', ':md-toast'
+rootProject.name = 'MaterialDesign-Toast'
+include ':md-toast'
